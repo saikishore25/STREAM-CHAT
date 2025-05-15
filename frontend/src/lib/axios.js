@@ -2,6 +2,6 @@ import axios from "axios"
 
 export const axiosInstance = axios.create({
 
-    baseURL:`http://localhost:3001`,
+    baseURL:`https://stream-chat-backend.vercel.app`,
     withCredentials:true
 })
