@@ -11,9 +11,9 @@ const generateJWTandSetCookie = async (userID, res) =>{
     res.cookie("authToken", token, {
 
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "strict",
-        maxAge: 60 * 60 * 1000
+        secure: true,          // needed on HTTPS
+        sameSite: "None",      // required for cross-site cookie usage
+        maxAge: 24 * 60 * 60 * 1000,
     });
     
     return token;
