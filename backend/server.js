@@ -18,7 +18,7 @@ app.use(cookieParser())
 
 app.use(cors({
 
-    origin:["http://localhost:5173", "https://stream-chat-frontend.vercel.app"],
+    origin:["https://stream-chat-frontend.vercel.app"],
     credentials: true
 }))
 app.get("/", (req, res)=>{
