@@ -19,19 +19,27 @@ export const logout = async () => {
 };
   
 export const getAuthUser = async () => {
+  try {
+    const token = localStorage.getItem("token"); // or sessionStorage
 
-    try{
-
-        const res = await axiosInstance.get("api/auth/me");
-        return res.data;
-    } 
-    
-    catch (error){
-
-        console.log("Error in getAuthUser:", error);
-        return null;
+    if (!token) {
+      console.log("No token found");
+      return null;
     }
+
+    const res = await axiosInstance.get("api/auth/me", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return res.data;
+  } catch (error) {
+    console.log("Error in getAuthUser:", error);
+    return null;
+  }
 };
+
 
 export const completeProfileSetup = async (userData) => {
     
