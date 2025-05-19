@@ -20,19 +20,9 @@ export const logout = async () => {
   
 export const getAuthUser = async () => {
   try {
-    const token = localStorage.getItem("token"); // or sessionStorage
-
-    if (!token) {
-      console.log("No token found");
-      return null;
-    }
-
     const res = await axiosInstance.get("api/auth/me", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      withCredentials: true, // IMPORTANT for sending cookies
     });
-
     return res.data;
   } catch (error) {
     console.log("Error in getAuthUser:", error);

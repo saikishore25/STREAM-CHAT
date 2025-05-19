@@ -3,7 +3,7 @@ import userModel from "../models/userModel.js";
 
 const verifyJWT = async (req, res, next) => {
 
-    const token = req.cookies.authToken; // Token from cookie
+    const token = req.cookies.authToken; 
     console.log("Verifiying Token: ", token)
 
     if(!token){
